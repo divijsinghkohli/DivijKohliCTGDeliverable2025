@@ -38,3 +38,7 @@ To customize the time intervals for OHLCV generation, modify the calls to genera
     2) Data is expected in the format: YYYY-MM-DD HH:MM:SS.ssssss for timestamps.
     3) Outliers in low prices are removed using the Interquartile Range (IQR) method.
     4) The script processes data efficiently but may have performance limitations with extremely large datasets.
+
+## Data Cleaning Report
+    #Checked Errors
+    
