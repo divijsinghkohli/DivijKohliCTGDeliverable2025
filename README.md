@@ -40,5 +40,8 @@ To customize the time intervals for OHLCV generation, modify the calls to genera
     4) The script processes data efficiently but may have performance limitations with extremely large datasets.
 
 ## Data Cleaning Report
-    #Checked Errors
+    1) Empty price, size, or timestamp:
+        Given that the dataset contained 1.76 million values, I handled empty fields by simply not including them in my final cleaned dataset as omitting these values would not significantly impact the output. In retrospect however, it would have been better practice to use some kind of predictive algorithm to estimate what the missing value should have been. 
+    2)
+        
     
