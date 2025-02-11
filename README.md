@@ -38,10 +38,20 @@ To customize the time intervals for OHLCV generation, modify the calls to genera
     2) Data is expected in the format: YYYY-MM-DD HH:MM:SS.ssssss for timestamps.
     3) Outliers in low prices are removed using the Interquartile Range (IQR) method.
     4) The script processes data efficiently but may have performance limitations with extremely large datasets.
-
 ## Data Cleaning Report
-    1) Empty price, size, or timestamp:
-        Given that the dataset contained 1.76 million values, I handled empty fields by simply not including them in my final cleaned dataset as omitting these values would not significantly impact the output. In retrospect however, it would have been better practice to use some kind of predictive algorithm to estimate what the missing value should have been. 
-    2)
-        
-    
+
+    1) Empty price, size, or timestamp
+        - Given that the dataset contained 1.76 million values, I handled empty fields by simply not including them in my final cleaned dataset
+        - I determined that omitting these values would not significantly impact the output given the size of the dataset. 
+        - In retrospect however, it would have been better practice to use some kind of predictive algorithm to estimate what the missing value should have been. 
+    2) Invalid type or negative value
+        - I delt with invalid data formatting (ex timestamp not in XX:XX:XX format) by once again simply removing these values
+        - Similarly, if I encountered a negative price or volume, I simply did not include that given row in my final cleaned dataset. 
+    3) Duplicate Values
+        - Using a vetting algorithim similar to a contains method, I ensured that an non initial instance of a row was not added to my cleaned data set. 
+        - This ensures that I completely eliminate duplicates without accidentally eliminating all instances of a given row value in the process
+    4) Outliers
+        - For the purpose of this program I defined an outlier as any price who was below Quartile 1 - 1.5(IQR) or above Quartile 3 + 1.5(IQR)
+        - Any prices who fit these criteria to be an outlier were not included in the final dataset
+
+In total, the final cleaned data set contained 1726271 rows of data, out of the original 1761321 rows. This means that 35050 rows or roughly 1.98% of the data was removed in the cleaning process. 
